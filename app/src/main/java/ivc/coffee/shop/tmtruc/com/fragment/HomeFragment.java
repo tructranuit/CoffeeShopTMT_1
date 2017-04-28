@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-//        CoffeeShop coffeeShop = new CoffeeShop(1,
+//        CoffeeShop coffeeShop = new CoffeeShop(2,
 //                getResources().getString(R.string.coffee_shop_name),
 //                getResources().getString(R.string.coffee_shop_phone_number) ,
 //                getResources().getString(R.string.coffee_shop_address),
@@ -109,7 +110,7 @@ public class HomeFragment extends Fragment {
         ImageView imageView = new ImageView(getContext());
         imageView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         imageView.setAdjustViewBounds(true);
-        Picasso.with(getContext()).load(imageList.get(position)).into(imageView);
+        Glide.with(getContext()).load(imageList.get(position)).into(imageView);
         viewFlipper.addView(imageView);
     }
 

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // create database
         databaseHelper = new DatabaseHelper(getApplicationContext());
 
         HomeFragment homeFragment = new HomeFragment();
