@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">CoffeeShopTMT</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="coffee_shop_description">"Cuộc sống là tận hưởng những điều tự nhiên nhất!"</string>
+
+    <!-- Toolbar titles when navigation menu item is selected -->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Menu</item>
+        <item>Order</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+
+</resources>
