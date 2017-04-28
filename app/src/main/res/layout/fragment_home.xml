@@ -3,23 +3,20 @@
     android:id="@+id/fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#6D4C41"
     tools:context="ivc.coffee.shop.tmtruc.com.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_marginTop="1dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#3E2723" />
 
             <TextView
                 android:id="@+id/tv_coffee_shop_name"
@@ -46,6 +43,7 @@
                 android:text="@string/coffee_shop_description"
                 android:textAlignment="center"
                 android:textAppearance="?android:textAppearanceSmall"
+                android:textStyle="italic"
                 android:textColor="#fff" />
 
             <LinearLayout
@@ -53,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_description"
-                android:layout_margin="2dp"
+                android:layout_marginBottom="2dp"
                 android:background="#d7ccc8"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -70,14 +68,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="3dp"
                         android:text="Đến với chúng tôi"
                         android:textAppearance="?android:textAppearanceSmall" />
 
@@ -85,7 +83,7 @@
                         android:id="@+id/tv_coffee_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Coffee shop"
+                        android:text="Address"
                         android:textAppearance="?android:textAppearanceSmall" />
 
 
@@ -109,7 +107,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linear_address"
-                android:layout_margin="2dp"
                 android:background="#d7ccc8"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -126,14 +123,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_margin="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
+                        android:layout_marginBottom="3dp"
                         android:text="Liên hệ với chúng tôi"
                         android:textAppearance="?android:textAppearanceSmall" />
 
@@ -141,9 +138,8 @@
                         android:id="@+id/tv_coffee_phone_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="089192889"
+                        android:text="Phone number"
                         android:textAppearance="?android:textAppearanceSmall" />
-
 
                 </LinearLayout>
 

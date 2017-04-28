@@ -22,13 +22,13 @@ public class CoffeeShopDatabase {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL " +
+                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " +
                  COLUMN_NAME_SHOP_NAME + " TEXT, " +
                  COLUMN_NAME_PHONE_NUMBER + " TEXT, " +
                  COLUMN_NAME_ADDRESS + " TEXT, " +
                  COLUMN_NAME_DESCRIPTION + " TEXT, " +
                  COLUMN_NAME_LATITUDE + " FLOAT, " +
-                 COLUMN_NAME_LONGITUDE + " FLOAT ";
+                 COLUMN_NAME_LONGITUDE + " FLOAT) ";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXIT " + TABLE_NAME;
@@ -42,9 +42,9 @@ public class CoffeeShopDatabase {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL " +
+                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " +
                  COLUMN_NAME_SHOP_ID + " INTEGER, " +
-                 COLUMN_NAME_IMAGE_URL + " TEXT ";
+                 COLUMN_NAME_IMAGE_URL + " TEXT) ";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXIT " + TABLE_NAME;
@@ -59,11 +59,11 @@ public class CoffeeShopDatabase {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL " +
+                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " +
                  COLUMN_NAME_DRINK_NAME + " TEXT, " +
                  COLUMN_NAME_DESCRIPTION + " TEXT, " +
                  COLUMN_NAME_TYPE + " TEXT, " +
-                 COLUMN_NAME_PRICE + " DOUBLE ";
+                 COLUMN_NAME_PRICE + " DOUBLE) ";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXIT " + TABLE_NAME;
@@ -77,9 +77,9 @@ public class CoffeeShopDatabase {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL " +
+                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " +
                  COLUMN_NAME_DRINK_ID + " INTEGER, " +
-                 COLUMN_NAME_IMAGE_URL + " TEXT ";
+                 COLUMN_NAME_IMAGE_URL + " TEXT) ";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXIT " + TABLE_NAME;
@@ -93,9 +93,9 @@ public class CoffeeShopDatabase {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL " +
+                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " +
                  COLUMN_NAME_ORDER_DATE + " INTEGER, " +
-                 COLUMN_NAME_TOTAL_COST + " DOUBLE ";
+                 COLUMN_NAME_TOTAL_COST + " DOUBLE) ";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXIT " + TABLE_NAME;
@@ -110,10 +110,10 @@ public class CoffeeShopDatabase {
 
         public static final String SQL_CREATE_ENTRIES =
                 "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
-                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL " +
+                 _ID + " INTEGER PRIMARY KEY  AUTOINCREMENT  NOT NULL, " +
                  COLUMN_NAME_ORDER_ID + " INTEGER, " +
                  COLUMN_NAME_DRINK_ID + " INTEGER, " +
-                 COLUMN_NAME_QUANTITY + " INTEGER ";
+                 COLUMN_NAME_QUANTITY + " INTEGER) ";
 
         public static final String SQL_DELETE_ENTRIES =
                 "DROP TABLE IF EXIT " + TABLE_NAME;

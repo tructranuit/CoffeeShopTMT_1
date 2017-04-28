@@ -5,7 +5,7 @@ package ivc.coffee.shop.tmtruc.com.model;
  */
 
 public class CoffeeShop {
-    private int _id;
+    private int _id = -1;
     private String shop_name;
     private String phone_number;
     private String address;
