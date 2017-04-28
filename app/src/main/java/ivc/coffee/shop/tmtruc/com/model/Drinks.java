@@ -5,7 +5,7 @@ package ivc.coffee.shop.tmtruc.com.model;
  */
 
 public class Drinks {
-    private int _id = -1;
+    private int _id;
     private String drink_name;
     private String description;
     private String type;

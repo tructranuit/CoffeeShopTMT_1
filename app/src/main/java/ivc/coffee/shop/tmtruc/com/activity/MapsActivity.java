@@ -1,5 +1,6 @@
 package ivc.coffee.shop.tmtruc.com.activity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -10,7 +11,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 import ivc.coffee.shop.tmtruc.com.R;
+import ivc.coffee.shop.tmtruc.com.model.CoffeeShop;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -40,8 +44,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        CoffeeShop coffeeShop = MainActivity.databaseHelper.getCoffeeShop(1);
+
         // Add a marker in my location and move the camera
-        LatLng myLocation = new LatLng(10.882619, 106.782388);
+        LatLng myLocation = new LatLng(coffeeShop.getLatitude(), coffeeShop.getLongitude());
         mMap.addMarker(new MarkerOptions().position(myLocation).title("My coffee shop name"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 17));
     }

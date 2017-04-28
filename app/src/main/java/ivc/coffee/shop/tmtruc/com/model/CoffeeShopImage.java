@@ -5,7 +5,7 @@ package ivc.coffee.shop.tmtruc.com.model;
  */
 
 public class CoffeeShopImage {
-    private int _id = -1;
+    private int _id;
     private int shop_id;
     private String image_url;
 

@@ -18,10 +18,12 @@ import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.fragment.HomeFragment;
 import ivc.coffee.shop.tmtruc.com.fragment.MenuFragment;
 import ivc.coffee.shop.tmtruc.com.fragment.OrderFragment;
+import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        databaseHelper = new DatabaseHelper(getApplicationContext());
 
         HomeFragment homeFragment = new HomeFragment();
         loadFragment(homeFragment);

@@ -21,8 +21,11 @@ import ivc.coffee.shop.tmtruc.com.model.Drinks;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 
-    public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public static final String DATABASE_NAME = "coffee_shop_database";
+    public static final int DATABASE_VERSION = 1;
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
@@ -143,7 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * getting coffee shop count
      **/
-    public int getCoffeeShopCount(){
+    public int getCoffeeShopCount() {
         String sqlCountQuery = "SELECT * FROM " + CoffeeShopDatabase.CoffeeShopTable.TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sqlCountQuery, null);
@@ -155,7 +158,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * update cofee shop
      **/
-    public int updateCoffeeShop(CoffeeShop coffeeShop){
+    public int updateCoffeeShop(CoffeeShop coffeeShop) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -173,13 +176,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * delete coffe shop
      */
-    public void deleteCoffeeShop(CoffeeShop coffeeShop){
+    public void deleteCoffeeShop(CoffeeShop coffeeShop) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.delete(CoffeeShopDatabase.CoffeeShopTable.TABLE_NAME, CoffeeShopDatabase.CoffeeShopTable._ID + " = ? ",
                 new String[]{String.valueOf(coffeeShop.get_id())});
     }
 
     //-------------------------- COFFEE SHOP IMAGE TABLE METHOD ----------------------------------//
+
     /**
      * insert new coffee shop image
      */
@@ -237,10 +241,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return coffeeShopImageList;
     }
 
-    /*
-    * getting all image of shop
-    * */
-    public List<CoffeeShopImage> getAllCoffeShopImageOfShop(){
+    /**
+     * getting all image of shop
+     **/
+    public List<CoffeeShopImage> getAllCoffeShopImageOfShop() {
         List<CoffeeShopImage> coffeeShopImageList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.CoffeeShopTable.TABLE_NAME + " cs, "
@@ -265,7 +269,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * getting coffee shop image count
      **/
-    public int getCoffeeShopImageCount(){
+    public int getCoffeeShopImageCount() {
         String sqlCountQuery = "SELECT * FROM " + CoffeeShopDatabase.CoffeeShopImageTable.TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sqlCountQuery, null);
@@ -277,7 +281,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * update cofee shop image
      **/
-    public int updateCoffeeShopImage(CoffeeShopImage coffeeShopImage){
+    public int updateCoffeeShopImage(CoffeeShopImage coffeeShopImage) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -291,7 +295,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * delete coffe shop
      */
-    public void deleteCoffeeShopImage(CoffeeShopImage coffeeShopImage){
+    public void deleteCoffeeShopImage(CoffeeShopImage coffeeShopImage) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.delete(CoffeeShopDatabase.CoffeeShopImageTable.TABLE_NAME, CoffeeShopDatabase.CoffeeShopImageTable._ID + " = ? ",
                 new String[]{String.valueOf(coffeeShopImage.get_id())});
@@ -365,7 +369,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * getting drinks count
      **/
-    public int getDrinksCount(){
+    public int getDrinksCount() {
         String sqlCountQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinksTable.TABLE_NAME;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(sqlCountQuery, null);
@@ -377,7 +381,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * update drink
      **/
-    public int updateDrink(Drinks drinks){
+    public int updateDrink(Drinks drinks) {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -393,7 +397,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * delete drink
      */
-    public void deleteDrink(Drinks drinks){
+    public void deleteDrink(Drinks drinks) {
         SQLiteDatabase db = this.getReadableDatabase();
         db.delete(CoffeeShopDatabase.DrinksTable.TABLE_NAME, CoffeeShopDatabase.DrinksTable._ID + " = ? ",
                 new String[]{String.valueOf(drinks.get_id())});

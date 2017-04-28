@@ -6,7 +6,7 @@ package ivc.coffee.shop.tmtruc.com.model;
 
 public class DrinkOrder {
 
-    private int _id = -1;
+    private int _id;
     private String order_date;
     private double total_cost;
 

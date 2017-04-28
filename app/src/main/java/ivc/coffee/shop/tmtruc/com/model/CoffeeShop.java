@@ -5,16 +5,25 @@ package ivc.coffee.shop.tmtruc.com.model;
  */
 
 public class CoffeeShop {
-    private int _id = -1;
+    private int _id;
     private String shop_name;
     private String phone_number;
     private String address;
     private String description;
-    private float latitude;
-    private float longitude;
+    private double latitude;
+    private double longitude;
 
-    public CoffeeShop(int _id, String shop_name, String phone_number, String address, String description, float latitude, float longitude) {
+    public CoffeeShop(int _id, String shop_name, String phone_number, String address, String description, double latitude, double longitude) {
         this._id = _id;
+        this.shop_name = shop_name;
+        this.phone_number = phone_number;
+        this.address = address;
+        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public CoffeeShop(String shop_name, String phone_number, String address, String description, double latitude, double longitude) {
         this.shop_name = shop_name;
         this.phone_number = phone_number;
         this.address = address;
@@ -63,19 +72,19 @@ public class CoffeeShop {
         this.description = description;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 }
