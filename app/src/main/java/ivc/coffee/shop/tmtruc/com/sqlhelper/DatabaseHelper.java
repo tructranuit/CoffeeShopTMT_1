@@ -112,8 +112,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_PHONE_NUMBER)),
                 cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_ADDRESS)),
                 cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_DESCRIPTION)),
-                cursor.getFloat(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_LATITUDE)),
-                cursor.getFloat(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_LONGITUDE))
+                cursor.getDouble(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_LATITUDE)),
+                cursor.getDouble(cursor.getColumnIndex(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_LONGITUDE))
         );
         return coffeeShop;
     }

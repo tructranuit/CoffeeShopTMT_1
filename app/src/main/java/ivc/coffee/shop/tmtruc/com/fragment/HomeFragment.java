@@ -48,16 +48,18 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CoffeeShop coffeeShop = new CoffeeShop(1,
-                getResources().getString(R.string.coffee_shop_name),
-                getResources().getString(R.string.coffee_shop_phone_number) ,
-                getResources().getString(R.string.coffee_shop_address),
-                getResources().getString(R.string.coffee_shop_description),
-                10.801945,
-                106.640050
-        );
+//        CoffeeShop coffeeShop = new CoffeeShop(1,
+//                getResources().getString(R.string.coffee_shop_name),
+//                getResources().getString(R.string.coffee_shop_phone_number) ,
+//                getResources().getString(R.string.coffee_shop_address),
+//                getResources().getString(R.string.coffee_shop_description),
+//                10.801945,
+//                106.640050
+//        );
+//
+//        MainActivity.databaseHelper.insertCoffeeShop(coffeeShop);
 
-        MainActivity.databaseHelper.insertCoffeeShop(coffeeShop);
+        CoffeeShop coffeeShop = MainActivity.databaseHelper.getCoffeeShop(1);
 
         TextView tvCoffeeShopName = (TextView) view.findViewById(R.id.tv_coffee_shop_name);
         tvCoffeeShopName.setText(coffeeShop.getShop_name());

@@ -13,6 +13,9 @@ public class CoffeeShop {
     private double latitude;
     private double longitude;
 
+    public CoffeeShop(){
+    }
+
     public CoffeeShop(int _id, String shop_name, String phone_number, String address, String description, double latitude, double longitude) {
         this._id = _id;
         this.shop_name = shop_name;
