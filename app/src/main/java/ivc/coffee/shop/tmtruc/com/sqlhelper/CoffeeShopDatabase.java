@@ -11,6 +11,10 @@ public class CoffeeShopDatabase {
     public CoffeeShopDatabase() {
     }
 
+
+    /**
+     * table coffee shop
+     * */
     public static class CoffeeShopTable implements BaseColumns {
         public static final String TABLE_NAME = "coffee_shop";
         public static final String COLUMN_NAME_SHOP_NAME = "shop_name";
@@ -34,6 +38,9 @@ public class CoffeeShopDatabase {
                 "DROP TABLE IF EXIT " + TABLE_NAME;
     }
 
+    /**
+     * table coffee shop image
+     * */
     public static class CoffeeShopImageTable implements BaseColumns {
         public static final String TABLE_NAME = "coffee_shop_image";
         public static final String COLUMN_NAME_SHOP_ID = "shop_id";
@@ -50,6 +57,9 @@ public class CoffeeShopDatabase {
                 "DROP TABLE IF EXIT " + TABLE_NAME;
     }
 
+    /**
+     * table dinks
+     * */
     public static class DrinksTable implements BaseColumns {
         public static final String TABLE_NAME = "drinks";
         public static final String COLUMN_NAME_DRINK_NAME = "drink_name";
@@ -69,6 +79,9 @@ public class CoffeeShopDatabase {
                 "DROP TABLE IF EXIT " + TABLE_NAME;
     }
 
+    /**
+     * table dink image
+     * */
     public static class DrinkImageTable implements BaseColumns {
         public static final String TABLE_NAME = "drink_image_table";
         public static final String COLUMN_NAME_DRINK_ID = "drink_id";
@@ -85,6 +98,9 @@ public class CoffeeShopDatabase {
                 "DROP TABLE IF EXIT " + TABLE_NAME;
     }
 
+    /**
+     * table dink order
+     * */
     public static class DrinkOrderTable implements BaseColumns {
         public static final String TABLE_NAME = "drink_order";
         public static final String COLUMN_NAME_ORDER_DATE = "order_date";
@@ -101,6 +117,9 @@ public class CoffeeShopDatabase {
                 "DROP TABLE IF EXIT " + TABLE_NAME;
     }
 
+    /**
+     * table order detail
+     * */
     public static class OrderDetailTable implements BaseColumns {
         public static final String TABLE_NAME = "order_detail";
         public static final String COLUMN_NAME_ORDER_ID = "order_id";

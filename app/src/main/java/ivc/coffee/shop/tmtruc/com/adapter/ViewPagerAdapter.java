@@ -22,7 +22,6 @@ import ivc.coffee.shop.tmtruc.com.R;
 public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
-    private LayoutInflater layoutInflater;
     private ArrayList<Integer> imagerList;
 
     public ViewPagerAdapter(Context context, ArrayList<Integer> imagerList) {
@@ -42,7 +41,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.slide_image_item_layout, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         Picasso.with(context).load(imagerList.get(position)).into(imageView);

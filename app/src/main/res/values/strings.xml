@@ -13,6 +13,8 @@
     <string name="coffee_shop_address">364 Cộng Hòa, Tân Bình, HCM</string>
     <string name="coffee_shop_phone_number">083123812</string>
     <string name="coffee_shop_name">Shop name</string>
+    <string name="coffee_shop_latitude">10.801945</string>
+    <string name="coffee_shop_longitude">106.640050</string>
 
     <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">

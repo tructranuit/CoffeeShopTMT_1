@@ -15,6 +15,8 @@ import java.util.List;
 
 import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.model.CoffeeShop;
+import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
+import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -44,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        CoffeeShop coffeeShop = MainActivity.databaseHelper.getCoffeeShop(1);
+        CoffeeShop coffeeShop = ActivityUtils.createDatabaseHelper(getApplicationContext()).getCoffeeShop(1);
 
         // Add a marker in my location and move the camera
         LatLng myLocation = new LatLng(coffeeShop.getLatitude(), coffeeShop.getLongitude());

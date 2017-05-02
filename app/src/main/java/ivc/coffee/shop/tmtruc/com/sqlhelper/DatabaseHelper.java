@@ -6,13 +6,17 @@ import android.database.Cursor;
 import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ivc.coffee.shop.tmtruc.com.model.CoffeeShop;
 import ivc.coffee.shop.tmtruc.com.model.CoffeeShopImage;
+import ivc.coffee.shop.tmtruc.com.model.DrinkImage;
+import ivc.coffee.shop.tmtruc.com.model.DrinkOrder;
 import ivc.coffee.shop.tmtruc.com.model.Drinks;
+import ivc.coffee.shop.tmtruc.com.model.OrderDetail;
 
 /**
  * Created by tmtruc on 27/04/2017.
@@ -27,6 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -244,14 +249,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * getting all image of shop
      **/
-    public List<CoffeeShopImage> getAllCoffeShopImageOfShop() {
+    public List<CoffeeShopImage> getAllCoffeShopImageOfShop(String coffee_shop_name) {
         List<CoffeeShopImage> coffeeShopImageList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.CoffeeShopTable.TABLE_NAME + " cs, "
                 + CoffeeShopDatabase.CoffeeShopImageTable.TABLE_NAME + " csi WHERE cs."
                 + CoffeeShopDatabase.CoffeeShopTable._ID + " = csi."
-                + CoffeeShopDatabase.CoffeeShopImageTable.COLUMN_NAME_SHOP_ID;
+                + CoffeeShopDatabase.CoffeeShopImageTable.COLUMN_NAME_SHOP_ID
+                + " AND cs." + CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_SHOP_NAME + " = '" + coffee_shop_name +"'";
         Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+
         if (cursor.moveToFirst()) {
             do {
                 CoffeeShopImage coffeeShopImage = new CoffeeShopImage(
@@ -293,7 +300,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * delete coffe shop
+     * delete coffe shop image
      */
     public void deleteCoffeeShopImage(CoffeeShopImage coffeeShopImage) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -302,7 +309,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    //---------------------------- COFFEE DRINKS TABLE METHODS -------------------------------------//
+    //---------------------------- DRINKS TABLE METHODS -------------------------------------//
 
     /**
      * insert new drink
@@ -403,4 +410,312 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(drinks.get_id())});
     }
 
+    //-------------------------- DRINK IMAGE TABLE METHOD ----------------------------------//
+
+    /**
+     * insert new drink image
+     */
+    public void insertDrinkImage(DrinkImage drinkImage) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CoffeeShopDatabase.DrinkImageTable._ID, drinkImage.get_id());
+        contentValues.put(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_DRINK_ID, drinkImage.getDrink_id());
+        contentValues.put(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_IMAGE_URL, drinkImage.getImage_url());
+
+        // insert row
+        db.insert(CoffeeShopDatabase.DrinkImageTable.TABLE_NAME, null, contentValues);
+        db.close();
+    }
+
+    /**
+     * get single drink image
+     **/
+    public DrinkImage getDrinkImage(int drink_image_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkImageTable.TABLE_NAME +
+                " WHERE " + CoffeeShopDatabase.DrinkImageTable._ID + " = " + drink_image_id;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        DrinkImage drinkImage = new DrinkImage(
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable._ID)),
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_DRINK_ID)),
+                cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_IMAGE_URL))
+        );
+        return drinkImage;
+    }
+
+    /**
+     * get all drink image
+     */
+    public List<DrinkImage> getAllDrinkImage() {
+        List<DrinkImage> drinkImageList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkImageTable.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                DrinkImage drinkImage = new DrinkImage(
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable._ID)),
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_DRINK_ID)),
+                        cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_IMAGE_URL))
+
+                );
+                drinkImageList.add(drinkImage);
+            } while (cursor.moveToNext());
+        }
+        return drinkImageList;
+    }
+
+    /**
+     * getting all image of drink
+     **/
+    public List<DrinkImage> getAllImageOfDrink(int drink_id) {
+        List<DrinkImage> drinkImageList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkImageTable.TABLE_NAME
+                + " WHERE " + CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_DRINK_ID + " = " + drink_id;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                DrinkImage drinkImage = new DrinkImage(
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable._ID)),
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_DRINK_ID)),
+                        cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_IMAGE_URL))
+
+                );
+                drinkImageList.add(drinkImage);
+            } while (cursor.moveToNext());
+        }
+        return drinkImageList;
+    }
+
+    /**
+     * getting drink image count
+     **/
+    public int getDrinkImageCount() {
+        String sqlCountQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkImageTable.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sqlCountQuery, null);
+        cursor.close();
+        int count = cursor.getCount();
+        return count;
+    }
+
+    /**
+     * update drink image
+     **/
+    public int updateDrinkImage(DrinkImage drinkImage) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_DRINK_ID, drinkImage.getDrink_id());
+        contentValues.put(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_IMAGE_URL, drinkImage.getImage_url());
+
+        return db.update(CoffeeShopDatabase.DrinkImageTable.TABLE_NAME, contentValues,
+                CoffeeShopDatabase.DrinkImageTable._ID + " = ? ", new String[]{String.valueOf(drinkImage.get_id())});
+    }
+
+    /**
+     * delete drink image
+     */
+    public void deleteDrinkImage(DrinkImage drinkImage) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(CoffeeShopDatabase.DrinkImageTable.TABLE_NAME, CoffeeShopDatabase.DrinkImageTable._ID + " = ? ",
+                new String[]{String.valueOf(drinkImage.get_id())});
+    }
+
+
+    //---------------------------- DRINK ORDER TABLE METHODS -------------------------------------//
+
+    /**
+     * insert new drink order
+     */
+    public void insertDrinkOrder(DrinkOrder drinkOrder) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CoffeeShopDatabase.DrinkOrderTable._ID, drinkOrder.get_id());
+        contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_ORDER_DATE, drinkOrder.getOrder_date());
+        contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_TOTAL_COST, drinkOrder.getTotal_cost());
+
+        // insert row
+        db.insert(CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME, null, contentValues);
+        db.close();
+    }
+
+    /**
+     * get single drink order
+     **/
+    public DrinkOrder getDrinkOrder(int drink_order_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME +
+                " WHERE " + CoffeeShopDatabase.DrinkOrderTable._ID + " = " + drink_order_id;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        DrinkOrder drinkOrder = new DrinkOrder(
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkOrderTable._ID)),
+                cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_ORDER_DATE)),
+                cursor.getDouble(cursor.getColumnIndex(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_TOTAL_COST))
+        );
+        return drinkOrder;
+    }
+
+    /**
+     * get all drink order
+     */
+    public List<DrinkOrder> getAllDrinkOrder() {
+        List<DrinkOrder> drinkOrderList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                DrinkOrder drinkOrder = new DrinkOrder(
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinkOrderTable._ID)),
+                        cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_ORDER_DATE)),
+                        cursor.getDouble(cursor.getColumnIndex(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_TOTAL_COST))
+                );
+                drinkOrderList.add(drinkOrder);
+            } while (cursor.moveToNext());
+        }
+        return drinkOrderList;
+    }
+
+    /**
+     * getting drink order count
+     **/
+    public int getDrinkOrderCount() {
+        String sqlCountQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sqlCountQuery, null);
+        cursor.close();
+        int count = cursor.getCount();
+        return count;
+    }
+
+    /**
+     * update drink order
+     **/
+    public int updateDrinkOrder(DrinkOrder drinkOrder) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_ORDER_DATE, drinkOrder.getOrder_date());
+        contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_TOTAL_COST, drinkOrder.getTotal_cost());
+
+        return db.update(CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME, contentValues,
+                CoffeeShopDatabase.DrinkOrderTable._ID + " = ? ", new String[]{String.valueOf(drinkOrder.get_id())});
+    }
+
+    /**
+     * delete drink order
+     */
+    public void deleteDrinkOrder(DrinkOrder drinkOrder) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME, CoffeeShopDatabase.DrinkOrderTable._ID + " = ? ",
+                new String[]{String.valueOf(drinkOrder.get_id())});
+    }
+
+
+    //---------------------------- ORDER DETAIL TABLE METHODS -------------------------------------//
+
+    /**
+     * insert new order detail
+     */
+    public void insertOrderDetail(OrderDetail orderDetail) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable._ID, orderDetail.get_id());
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_ORDER_ID, orderDetail.getOrder_id());
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_DRINK_ID, orderDetail.getDrink_id());
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_QUANTITY, orderDetail.getQuantity());
+
+        // insert row
+        db.insert(CoffeeShopDatabase.OrderDetailTable.TABLE_NAME, null, contentValues);
+        db.close();
+    }
+
+    /**
+     * get single order detail
+     **/
+    public OrderDetail getOrderDetail(int order_detail_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.OrderDetailTable.TABLE_NAME +
+                " WHERE " + CoffeeShopDatabase.OrderDetailTable._ID + " = " + order_detail_id;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        OrderDetail orderDetail = new OrderDetail(
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable._ID)),
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_ORDER_ID)),
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_DRINK_ID)),
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_QUANTITY))
+        );
+        return orderDetail;
+    }
+
+    /**
+     * get all order detail
+     */
+    public List<OrderDetail> getAllOrderDetail() {
+        List<OrderDetail> orderDetailList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.OrderDetailTable.TABLE_NAME;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                OrderDetail orderDetail = new OrderDetail(
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable._ID)),
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_ORDER_ID)),
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_DRINK_ID)),
+                        cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_QUANTITY))
+                );
+                orderDetailList.add(orderDetail);
+            } while (cursor.moveToNext());
+        }
+        return orderDetailList;
+    }
+
+    /**
+     * getting order detail count
+     **/
+    public int getOrderDetailCount() {
+        String sqlCountQuery = "SELECT * FROM " + CoffeeShopDatabase.OrderDetailTable.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sqlCountQuery, null);
+        cursor.close();
+        int count = cursor.getCount();
+        return count;
+    }
+
+    /**
+     * update order detail
+     **/
+    public int updateOrderDetail(OrderDetail orderDetail) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_ORDER_ID, orderDetail.getOrder_id());
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_DRINK_ID, orderDetail.getDrink_id());
+        contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_QUANTITY, orderDetail.getQuantity());
+
+        return db.update(CoffeeShopDatabase.OrderDetailTable.TABLE_NAME, contentValues,
+                CoffeeShopDatabase.OrderDetailTable._ID + " = ? ", new String[]{String.valueOf(orderDetail.get_id())});
+    }
+
+    /**
+     * delete Order detail
+     */
+    public void deleteOrderDetail(OrderDetail orderDetail) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        db.delete(CoffeeShopDatabase.OrderDetailTable.TABLE_NAME, CoffeeShopDatabase.OrderDetailTable._ID + " = ? ",
+                new String[]{String.valueOf(orderDetail.get_id())});
+    }
 }

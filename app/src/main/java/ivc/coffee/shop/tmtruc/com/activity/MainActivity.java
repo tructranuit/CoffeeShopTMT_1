@@ -1,5 +1,6 @@
 package ivc.coffee.shop.tmtruc.com.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -19,11 +20,12 @@ import ivc.coffee.shop.tmtruc.com.fragment.HomeFragment;
 import ivc.coffee.shop.tmtruc.com.fragment.MenuFragment;
 import ivc.coffee.shop.tmtruc.com.fragment.OrderFragment;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
+import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static DatabaseHelper databaseHelper;
+//    public static DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +35,12 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         // create database
-        databaseHelper = new DatabaseHelper(getApplicationContext());
+//        databaseHelper = new DatabaseHelper(getApplicationContext());
 
         HomeFragment homeFragment = new HomeFragment();
-        loadFragment(homeFragment);
+        // load home fragment
+        ActivityUtils.loadFragmentToActivity(
+                getSupportFragmentManager(), homeFragment, R.id.fragment_container);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -89,18 +93,19 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_home) {
             // load home fragment
             HomeFragment homeFragment = new HomeFragment();
-            loadFragment(homeFragment);
-
+            ActivityUtils.loadFragmentToActivity(
+                    getSupportFragmentManager(), homeFragment, R.id.fragment_container);
         } else if (id == R.id.nav_menu) {
             //load menu fragment
             MenuFragment menuFragment = new MenuFragment();
-            loadFragment(menuFragment);
+            ActivityUtils.loadFragmentToActivity(
+                    getSupportFragmentManager(), menuFragment, R.id.fragment_container);
         } else if (id == R.id.nav_order) {
             //load order fragment
             OrderFragment orderFragment = new OrderFragment();
-            loadFragment(orderFragment);
+            ActivityUtils.loadFragmentToActivity(
+                    getSupportFragmentManager(), orderFragment, R.id.fragment_container);
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -108,19 +113,19 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    // load fragment
-    public void loadFragment(final Fragment fragment) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                android.support.v4.app.FragmentTransaction fragmentTransaction =
-                        getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-                fragmentTransaction.replace(R.id.fragment_container, fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-    }
+    //load fragment
+//    public void loadFragment(final Fragment fragment) {
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                android.support.v4.app.FragmentTransaction fragmentTransaction =
+//                        getSupportFragmentManager().beginTransaction();
+//                fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
+//                fragmentTransaction.replace(R.id.fragment_container, fragment);
+//                fragmentTransaction.commit();
+//            }
+//        });
+//
+//    }
 
 }
