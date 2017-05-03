@@ -46,8 +46,8 @@ public class MenuFragment extends Fragment {
         //create database helper
         DatabaseHelper databaseHelper = ActivityUtils.createDatabaseHelper(getContext());
 
-//        createDataForDrinksTable(databaseHelper);
-//        createDataForDinkImageTable(databaseHelper);
+        createDataForDrinksTable(databaseHelper);
+        createDataForDinkImageTable(databaseHelper);
 
         GridView grvMenu = (GridView) view.findViewById(R.id.grid_menu);
 

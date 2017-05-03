@@ -83,5 +83,7 @@ public class DrinkDetailActivity extends AppCompatActivity {
                 viewFlipper.showNext();
             }
         });
+
+
     }
 }

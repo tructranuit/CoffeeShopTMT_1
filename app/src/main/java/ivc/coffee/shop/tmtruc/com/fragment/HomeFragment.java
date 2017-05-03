@@ -50,9 +50,9 @@ public class HomeFragment extends Fragment {
         databaseHelper = ActivityUtils.createDatabaseHelper(getContext());
 
         //create data for coffee shop table
-//        createDataForCoffeeShopTable(databaseHelper);
+        createDataForCoffeeShopTable(databaseHelper);
         //create data for coffee shop image table
-//        createDataForCoffeeShopImageTable(databaseHelper);
+        createDataForCoffeeShopImageTable(databaseHelper);
 
         CoffeeShop coffeeShop = databaseHelper.getCoffeeShop(1);
 
@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
         tvCoffeeShopPhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+tvCoffeeShopPhoneNumber.getText()));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tvCoffeeShopPhoneNumber.getText()));
                 startActivity(intent);
             }
         });
