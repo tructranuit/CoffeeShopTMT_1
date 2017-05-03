@@ -3,7 +3,6 @@
     android:id="@+id/fragment_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6D4C41"
     tools:context="ivc.coffee.shop.tmtruc.com.fragment.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -12,11 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="1dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorScreenBackground">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/tv_coffee_shop_name"
@@ -25,8 +25,7 @@
                 android:layout_margin="10dp"
                 android:text="My coffee shop name"
                 android:textAlignment="center"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="#fff" />
+                android:textAppearance="?android:textAppearanceMedium" />
 
             <ViewFlipper
                 android:id="@+id/viewflipper"
@@ -43,7 +42,6 @@
                 android:text="Description"
                 android:textAlignment="center"
                 android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="#fff"
                 android:textStyle="italic" />
 
             <LinearLayout
@@ -51,9 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_description"
-                android:layout_marginBottom="2dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/colorBackground"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -110,8 +106,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linear_address"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:background="@color/colorBackground"
                 android:gravity="center"
                 android:orientation="horizontal">

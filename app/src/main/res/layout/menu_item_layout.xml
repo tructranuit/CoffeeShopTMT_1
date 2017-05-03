@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/whiteBacground"
+    android:background="@color/whiteBackground"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
         android:gravity="center"
-        android:text="Drink_name" />
+        android:singleLine="true"
+        android:text="@string/drink_name" />
 
     <TextView
         android:id="@+id/tv_drink_price"
@@ -32,6 +33,6 @@
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:textColor="@color/textColor"
-        android:text="Price" />
+        android:text="@string/drink_price" />
 
 </LinearLayout>

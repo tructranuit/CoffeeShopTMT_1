@@ -80,7 +80,7 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
         List<DrinkImage> drinkImageList = databaseHelper.getAllImageOfDrink(drinks.get_id());
 
         Picasso.with(context)
-                .load(Uri.fromFile(new File(drinkImageList.get(0).getImage_url())))
+                .load(drinkImageList.get(0).getImage_url())
                 .error(R.drawable.img_default)
                 .into(viewHolder.img_drink_image);
 

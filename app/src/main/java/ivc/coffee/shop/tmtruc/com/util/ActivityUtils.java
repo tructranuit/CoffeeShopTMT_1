@@ -5,6 +5,11 @@ import android.app.Fragment;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ViewFlipper;
+
+import com.squareup.picasso.Picasso;
 
 import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
@@ -26,7 +31,6 @@ public class ActivityUtils {
 
     //create database helper
     public static DatabaseHelper createDatabaseHelper(Context context){
-        DatabaseHelper databaseHelper = new DatabaseHelper(context);
-        return databaseHelper;
+        return new DatabaseHelper(context);
     }
 }

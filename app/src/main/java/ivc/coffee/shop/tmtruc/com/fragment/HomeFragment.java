@@ -50,15 +50,15 @@ public class HomeFragment extends Fragment {
         databaseHelper = ActivityUtils.createDatabaseHelper(getContext());
 
         //create data for coffee shop table
-        createDataForCoffeeShopTable(databaseHelper);
+//        createDataForCoffeeShopTable(databaseHelper);
         //create data for coffee shop image table
-        createDataForCoffeeShopImageTable(databaseHelper);
+//        createDataForCoffeeShopImageTable(databaseHelper);
 
         CoffeeShop coffeeShop = databaseHelper.getCoffeeShop(1);
 
         TextView tvCoffeeShopName = (TextView) view.findViewById(R.id.tv_coffee_shop_name);
         tvCoffeeShopName.setText(coffeeShop.getShop_name());
-        TextView tvCoffeeShopPhoneNumber = (TextView) view.findViewById(R.id.tv_coffee_phone_number);
+        final TextView tvCoffeeShopPhoneNumber = (TextView) view.findViewById(R.id.tv_coffee_phone_number);
         tvCoffeeShopPhoneNumber.setText(coffeeShop.getPhone_number());
         TextView tvCoffeeShopAddress = (TextView) view.findViewById(R.id.tv_coffee_address);
         tvCoffeeShopAddress.setText(coffeeShop.getAddress());
@@ -73,11 +73,20 @@ public class HomeFragment extends Fragment {
         createImageSlider(viewFlipper);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.img_google_map);
-        //on click google maps icon
+        //click google maps icon event
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MapsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //click phone number event
+        tvCoffeeShopPhoneNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+tvCoffeeShopPhoneNumber.getText()));
                 startActivity(intent);
             }
         });
@@ -104,7 +113,7 @@ public class HomeFragment extends Fragment {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         imageView.setAdjustViewBounds(true);
         Picasso.with(getContext())
-                .load(Uri.fromFile(new File(coffeeShopImageList.get(position).getImage_url())))
+                .load(coffeeShopImageList.get(position).getImage_url())
                 .into(imageView);
         viewFlipper.addView(imageView);
     }
@@ -125,12 +134,9 @@ public class HomeFragment extends Fragment {
     //create data for coffee shop image table
     public void createDataForCoffeeShopImageTable(DatabaseHelper databaseHelper) {
         List<CoffeeShopImage> coffeeShopImageList = new ArrayList<>();
-        coffeeShopImageList.add(new CoffeeShopImage(1, 1,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/coffee_shop_img_1.jpg"));
-        coffeeShopImageList.add(new CoffeeShopImage(2, 1,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/coffee_shop_img_2.jpg"));
-        coffeeShopImageList.add(new CoffeeShopImage(3, 1,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/coffee_shop_img_3.jpg"));
+        coffeeShopImageList.add(new CoffeeShopImage(1, 1, "http://i.imgur.com/dgr8YjI.jpg"));
+        coffeeShopImageList.add(new CoffeeShopImage(2, 1, "http://i.imgur.com/8m7y4iZ.jpg"));
+        coffeeShopImageList.add(new CoffeeShopImage(3, 1, "http://i.imgur.com/81apX9W.jpg"));
         for (int i = 0; i < coffeeShopImageList.size(); i++) {
             databaseHelper.insertCoffeeShopImage(coffeeShopImageList.get(i));
         }

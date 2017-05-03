@@ -8,7 +8,10 @@ public class OrderDetail {
     private int _id;
     private int order_id;
     private int drink_id;
-    private int quantity;
+    private int quantity = 0;
+
+    public OrderDetail(){
+    }
 
     public OrderDetail(int _id, int order_id, int drink_id, int quantity) {
         this._id = _id;

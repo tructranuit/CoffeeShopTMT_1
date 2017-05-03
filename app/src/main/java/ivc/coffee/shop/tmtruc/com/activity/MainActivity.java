@@ -25,17 +25,12 @@ import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-//    public static DatabaseHelper databaseHelper;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        // create database
-//        databaseHelper = new DatabaseHelper(getApplicationContext());
 
         HomeFragment homeFragment = new HomeFragment();
         // load home fragment
@@ -111,21 +106,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-    //load fragment
-//    public void loadFragment(final Fragment fragment) {
-//        runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                android.support.v4.app.FragmentTransaction fragmentTransaction =
-//                        getSupportFragmentManager().beginTransaction();
-//                fragmentTransaction.setCustomAnimations(android.R.anim.slide_in_left, android.R.anim.slide_out_right);
-//                fragmentTransaction.replace(R.id.fragment_container, fragment);
-//                fragmentTransaction.commit();
-//            }
-//        });
-//
-//    }
 
 }

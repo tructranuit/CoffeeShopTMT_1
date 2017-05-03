@@ -10,6 +10,9 @@ public class DrinkOrder {
     private String order_date;
     private double total_cost;
 
+    public DrinkOrder(){
+    }
+
     public DrinkOrder(int _id, String order_date, double total_cost) {
         this._id = _id;
         this.order_date = order_date;

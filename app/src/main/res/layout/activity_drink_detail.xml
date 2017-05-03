@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/whiteBacground"
+    android:background="@color/whiteBackground"
     android:gravity="center"
     android:orientation="vertical"
     tools:context="ivc.coffee.shop.tmtruc.com.activity.DrinkDetailActivity">
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="5dp"
-        android:text="Drink name"
+        android:text="@string/drink_name"
         android:textAppearance="?android:textAppearanceMedium"/>
 
     <TextView
@@ -23,8 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
-        android:text="Giá"
+        android:layout_marginBottom="10dp"
+        android:text="@string/drink_price"
         android:textColor="@color/textColor"
         android:textAppearance="?android:textAppearanceSmall"/>
 
@@ -36,6 +36,7 @@
         android:orientation="horizontal">
 
         <ImageButton
+            android:id="@+id/btn_prev"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,6 +44,7 @@
             android:src="@drawable/ic_arrow_back" />
 
         <ViewFlipper
+            android:id="@+id/viewflipper_dink_image"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4">
@@ -50,6 +52,7 @@
         </ViewFlipper>
 
         <ImageButton
+            android:id="@+id/btn_next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -63,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Descripton"
+        android:text="@string/drink_description"
         android:textStyle="italic"
         android:padding="10dp"/>
 
@@ -76,23 +79,22 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/whiteBacground"
+            android:layout_marginRight="50dp"
             android:gravity="center"
-            android:layout_marginRight="40dp"
             android:orientation="horizontal">
 
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorBackground"
+                android:background="@color/colorScreenBackground"
                 android:padding="5dp"
                 android:src="@drawable/ic_remove" />
 
             <TextView
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorBackground"
+                android:background="@color/colorScreenBackground"
                 android:gravity="center"
                 android:text="0" />
 
@@ -100,16 +102,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
-                android:background="@color/colorBackground"
+                android:background="@color/colorScreenBackground"
                 android:padding="5dp"
                 android:src="@drawable/ic_add" />
         </LinearLayout>
 
 
-        <Button
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Order"
+            android:text="@string/action_order"
             android:textAllCaps="false" />
 
     </LinearLayout>

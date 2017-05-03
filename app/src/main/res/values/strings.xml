@@ -11,7 +11,7 @@
 
     <string name="coffee_shop_description">"Cuộc sống là tận hưởng những điều tự nhiên nhất!"</string>
     <string name="coffee_shop_address">364 Cộng Hòa, Tân Bình, HCM</string>
-    <string name="coffee_shop_phone_number">083123812</string>
+    <string name="coffee_shop_phone_number">0831238123</string>
     <string name="coffee_shop_name">Shop name</string>
     <string name="coffee_shop_latitude">10.801945</string>
     <string name="coffee_shop_longitude">106.640050</string>
@@ -23,5 +23,10 @@
         <item>Order</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="action_order">Add to cart</string>
+
+    <string name="drink_name">Drink name</string>
+    <string name="drink_price">Price</string>
+    <string name="drink_description">Description</string>
 
 </resources>

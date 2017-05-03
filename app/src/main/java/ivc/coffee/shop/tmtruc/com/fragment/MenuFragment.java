@@ -46,8 +46,8 @@ public class MenuFragment extends Fragment {
         //create database helper
         DatabaseHelper databaseHelper = ActivityUtils.createDatabaseHelper(getContext());
 
-        createDataForDrinksTable(databaseHelper);
-        createDataForDinkImageTable(databaseHelper);
+//        createDataForDrinksTable(databaseHelper);
+//        createDataForDinkImageTable(databaseHelper);
 
         GridView grvMenu = (GridView) view.findViewById(R.id.grid_menu);
 
@@ -74,7 +74,7 @@ public class MenuFragment extends Fragment {
     public void createDataForDrinksTable(DatabaseHelper databaseHelper){
         List<Drinks> drinksList = new ArrayList<>();
         drinksList.add(new Drinks(1, "Cafe Đen", "Cafe Đen", "Cafe", 30000));
-        drinksList.add(new Drinks(2, "Cafe Sữa", "Cafe Sữa Nóng", "Cafe", 30000));
+        drinksList.add(new Drinks(2, "Cafe Sữa", "Cafe Sữa", "Cafe", 30000));
         drinksList.add(new Drinks(3, "Cafe Cappuccino", "Cafe Cappuccino", "Cafe", 50000));
         drinksList.add(new Drinks(4, "Cafe Latte Macchiato", "Cafe Latte Macchiato", "Cafe", 50000));
         drinksList.add(new Drinks(5, "Cafe Latte", "Cafe Latte", "Cafe", 50000));
@@ -97,38 +97,23 @@ public class MenuFragment extends Fragment {
     //create data for drink image table
     public void createDataForDinkImageTable(DatabaseHelper databaseHelper){
         List<DrinkImage> drinkImageList = new ArrayList<>();
-        drinkImageList.add(new DrinkImage(1, 1,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_cafe_den.jpg"));
-        drinkImageList.add(new DrinkImage(2, 2,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_cafe_sua.png"));
-        drinkImageList.add(new DrinkImage(3, 3,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_cafe_cappuccino.jpg"));
-        drinkImageList.add(new DrinkImage(4, 4,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_cafe_latte_macchiato.jpg"));
-        drinkImageList.add(new DrinkImage(5, 5,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_cafe_latte.jpg"));
-        drinkImageList.add(new DrinkImage(6, 6,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_sinh_to_xoai.jpg"));
-        drinkImageList.add(new DrinkImage(7, 7,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_sinh_to_ca_rot.jpg"));
-        drinkImageList.add(new DrinkImage(8, 8,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_sinh_to_du_du.jpg"));
-        drinkImageList.add(new DrinkImage(9, 9,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_sinh_to_dau.jpg"));
-        drinkImageList.add(new DrinkImage(10, 10,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_nuoc_ep_ca_chua.jpg"));
-        drinkImageList.add(new DrinkImage(11, 11,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_nuoc_ep_tao.jpg"));
-        drinkImageList.add(new DrinkImage(12, 12,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_nuoc_ep_cam.jpg"));
-        drinkImageList.add(new DrinkImage(13, 13,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_tra_lipton_chanh.jpg"));
-        drinkImageList.add(new DrinkImage(14, 14,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_tra_tao_bac_ha.jpg"));
-        drinkImageList.add(new DrinkImage(15, 15,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_tra_dao.jpg"));
-        drinkImageList.add(new DrinkImage(16, 16,
-                Environment.getExternalStorageDirectory().getAbsolutePath() + "/Images/drink_img_tra_xoai.jpg"));
+        drinkImageList.add(new DrinkImage(1, 1, "http://i.imgur.com/qk6KGYT.jpg"));
+        drinkImageList.add(new DrinkImage(2, 2, "http://i.imgur.com/0zv5Cjh.png"));
+        drinkImageList.add(new DrinkImage(3, 3, "http://i.imgur.com/S5dr2s3.jpg"));
+        drinkImageList.add(new DrinkImage(4, 4, "http://i.imgur.com/TurKppk.jpg"));
+        drinkImageList.add(new DrinkImage(5, 5, "http://i.imgur.com/7LLUnTe.jpg"));
+        drinkImageList.add(new DrinkImage(6, 6, "http://i.imgur.com/SGUuSqc.jpg"));
+        drinkImageList.add(new DrinkImage(7, 7, "http://i.imgur.com/YEetHrU.jpg"));
+        drinkImageList.add(new DrinkImage(8, 8, "http://i.imgur.com/iUfEZuL.jpg"));
+        drinkImageList.add(new DrinkImage(9, 9, "http://i.imgur.com/2OHbNqr.jpg"));
+        drinkImageList.add(new DrinkImage(10, 10, "http://i.imgur.com/M9j7aCo.jpg"));
+        drinkImageList.add(new DrinkImage(11, 11, "http://i.imgur.com/pmWk0Cx.jpg"));
+        drinkImageList.add(new DrinkImage(12, 12, "http://i.imgur.com/WlshJjP.jpg"));
+        drinkImageList.add(new DrinkImage(13, 13, "http://i.imgur.com/BhUaQXE.jpg"));
+        drinkImageList.add(new DrinkImage(14, 14, "http://i.imgur.com/dTpQIyx.jpg"));
+        drinkImageList.add(new DrinkImage(15, 15, "http://i.imgur.com/0QSr5Ol.jpg"));
+        drinkImageList.add(new DrinkImage(16, 16, "http://i.imgur.com/F2qWnWh.jpg"));
+        drinkImageList.add(new DrinkImage(17, 1, "http://i.imgur.com/aRdnMQw.jpg"));
         //insert to database
         for (int i = 0; i<drinkImageList.size(); i++){
             databaseHelper.insertDrinkImage(drinkImageList.get(i));
