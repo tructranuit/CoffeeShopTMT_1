@@ -1,10 +1,12 @@
 package ivc.coffee.shop.tmtruc.com.model;
 
+import java.io.Serializable;
+
 /**
  * Created by tmtruc on 27/04/2017.
  */
 
-public class Drinks {
+public class Drinks implements Serializable{
     private int _id;
     private String drink_name;
     private String description;

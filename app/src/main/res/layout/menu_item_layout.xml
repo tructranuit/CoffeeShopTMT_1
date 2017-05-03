@@ -2,44 +2,36 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/whiteBacground"
     android:gravity="center"
     android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginBottom="2dp"
-        android:layout_gravity="center"
-        android:layout_weight="3"
+
+    <ImageView
+        android:id="@+id/img_drink_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="100dp"
         android:scaleType="fitCenter"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/img_drink_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:maxHeight="150dp"
-            android:maxWidth="150dp"
-            android:src="@drawable/img_default" />
-
-        <TextView
-            android:id="@+id/tv_drink_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:background="#d7d5d5"
-            android:layout_alignRight="@id/img_drink_image"
-            android:text="Giá" />
-    </RelativeLayout>
+        android:src="@drawable/img_default" />
 
     <TextView
         android:id="@+id/tv_drink_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginBottom="2dp"
         android:gravity="center"
-        android:text="Drink_name"
-        android:layout_marginBottom="10dp" />
+        android:text="Drink_name" />
+
+    <TextView
+        android:id="@+id/tv_drink_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:textColor="@color/textColor"
+        android:text="Price" />
 
 </LinearLayout>

@@ -54,7 +54,7 @@
                 android:layout_marginBottom="2dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:background="#d7ccc8"
+                android:background="@color/colorBackground"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -112,7 +112,7 @@
                 android:layout_below="@+id/linear_address"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:background="#d7ccc8"
+                android:background="@color/colorBackground"
                 android:gravity="center"
                 android:orientation="horizontal">
 
