@@ -1,8 +1,11 @@
 package ivc.coffee.shop.tmtruc.com.adapter;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -34,10 +38,9 @@ import static ivc.coffee.shop.tmtruc.com.activity.DrinkDetailActivity.MAX_QUANTI
 public class OrderAdapter extends ArrayAdapter<OrderDetail> {
     ArrayList<OrderDetail> orderDetailArrayList;
 
-    public OrderAdapter(Context context, int resource, List<OrderDetail> orderDetailList) {
+    public OrderAdapter(Context context, int resource, ArrayList<OrderDetail> orderDetailList) {
         super(context, resource, orderDetailList);
-        orderDetailArrayList = new ArrayList<>();
-        orderDetailArrayList.addAll(orderDetailList);
+        orderDetailArrayList = orderDetailList;
     }
 
     public class ViewHolder {
@@ -47,6 +50,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
         TextView tv_quantity;
         ImageButton btn_add;
         ImageButton btn_remove;
+        ImageButton btn_delete;
 
         ViewHolder(View view) {
             img_drink_image = (ImageView) view.findViewById(R.id.img_drink_image);
@@ -55,13 +59,14 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
             tv_quantity = (TextView) view.findViewById(R.id.tv_quantity);
             btn_add = (ImageButton) view.findViewById(R.id.btn_add);
             btn_remove = (ImageButton) view.findViewById(R.id.btn_remove);
+            btn_delete = (ImageButton) view.findViewById(R.id.btn_delete);
         }
     }
 
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
         ViewHolder viewHolder = null;
 
@@ -77,7 +82,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
 
-        Drinks drinks = databaseHelper.getDrink(orderDetail.getDrink_id());
+        final Drinks drinks = databaseHelper.getDrink(orderDetail.getDrink_id());
 
         viewHolder.tv_drink_name.setText(drinks.getDrink_name());
         viewHolder.tv_price.setText(FormatNumberUtils.formatNumber(drinks.getPrice()) + "đ");
@@ -111,6 +116,33 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
                 }
             }
         });
+
+        viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setIcon(R.drawable.ic_warning)
+                        .setTitle("Warning!!")
+                        .setMessage("Bạn có chắc muốn xóa sản phẩm này không?")
+                        .setNegativeButton("Có", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getContext(), "Đã xóa sản phẩm!", Toast.LENGTH_SHORT).show();
+                                remove(orderDetail);
+                                notifyDataSetChanged();
+                            }
+                        })
+                        .setPositiveButton("Không", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                Dialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
         return view;
     }
 }
