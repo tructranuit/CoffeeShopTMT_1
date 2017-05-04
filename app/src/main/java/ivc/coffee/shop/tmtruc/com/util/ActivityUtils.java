@@ -6,13 +6,22 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ViewFlipper;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
 import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
+
+import static ivc.coffee.shop.tmtruc.com.sqlhelper.CoffeeShopDatabase.DATABASE_NAME;
 
 /**
  * Created by tmt on 02/05/2017.
@@ -29,8 +38,11 @@ public class ActivityUtils {
         fragmentTransaction.commit();
     }
 
-    //create database helper
-    public static DatabaseHelper createDatabaseHelper(Context context){
-        return new DatabaseHelper(context);
+    //get datetime
+    public static String getDatetime(){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
     }
+
 }

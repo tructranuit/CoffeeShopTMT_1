@@ -23,7 +23,8 @@
         <item>Order</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
-    <string name="action_order">Add to cart</string>
+    <string name="action_add_to_cart">Add to cart</string>
+    <string name="action_order">Order</string>
 
     <string name="drink_name">Drink name</string>
     <string name="drink_price">Price</string>

@@ -46,7 +46,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        CoffeeShop coffeeShop = ActivityUtils.createDatabaseHelper(getApplicationContext()).getCoffeeShop(1);
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        CoffeeShop coffeeShop = databaseHelper.getCoffeeShop(1);
 
         // Add a marker in my location and move the camera
         LatLng myLocation = new LatLng(coffeeShop.getLatitude(), coffeeShop.getLongitude());

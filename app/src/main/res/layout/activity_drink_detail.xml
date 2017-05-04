@@ -84,35 +84,38 @@
             android:orientation="horizontal">
 
             <ImageButton
+                android:id="@+id/btn_remove"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="1dp"
-                android:background="@color/colorScreenBackground"
+                android:background="@drawable/custom_button"
                 android:padding="5dp"
                 android:src="@drawable/ic_remove" />
 
             <TextView
+                android:id="@+id/tv_quantity"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
                 android:background="@color/colorScreenBackground"
-                android:gravity="center"
-                android:text="0" />
+                android:gravity="center" />
 
             <ImageButton
+                android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
-                android:background="@color/colorScreenBackground"
+                android:background="@drawable/custom_button"
                 android:padding="5dp"
                 android:src="@drawable/ic_add" />
         </LinearLayout>
 
 
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_order"
+            android:id="@+id/btn_add_to_cart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_order"
+            android:backgroundTint="@color/colorScreenBackground"
+            android:text="@string/action_add_to_cart"
             android:textAllCaps="false" />
 
     </LinearLayout>

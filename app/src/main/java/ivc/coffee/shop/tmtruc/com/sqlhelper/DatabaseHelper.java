@@ -18,15 +18,14 @@ import ivc.coffee.shop.tmtruc.com.model.DrinkOrder;
 import ivc.coffee.shop.tmtruc.com.model.Drinks;
 import ivc.coffee.shop.tmtruc.com.model.OrderDetail;
 
+import static ivc.coffee.shop.tmtruc.com.sqlhelper.CoffeeShopDatabase.DATABASE_NAME;
+import static ivc.coffee.shop.tmtruc.com.sqlhelper.CoffeeShopDatabase.DATABASE_VERSION;
+
 /**
  * Created by tmtruc on 27/04/2017.
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-
-
-    public static final String DATABASE_NAME = "coffee_shop_database";
-    public static final int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -350,6 +349,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return drinks;
     }
 
+
     /**
      * get all drink
      */
@@ -372,6 +372,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return drinksList;
     }
+
+    /**
+     * get drink in order detail
+     * */
+    public Drinks getDrinkInOrderDetail(int drink_id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sqlSelectQuery = "SELECT * FROM " + CoffeeShopDatabase.DrinksTable.TABLE_NAME + " dr, "
+                + CoffeeShopDatabase.OrderDetailTable.TABLE_NAME + " od WHERE dr."
+                + CoffeeShopDatabase.DrinksTable._ID + " = " + drink_id
+                + " AND dr." + CoffeeShopDatabase.DrinksTable._ID + " = od." + CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_DRINK_ID;
+        Cursor cursor = db.rawQuery(sqlSelectQuery, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        Drinks drinks = new Drinks(
+                cursor.getInt(cursor.getColumnIndex(CoffeeShopDatabase.DrinksTable._ID)),
+                cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinksTable.COLUMN_NAME_DRINK_NAME)),
+                cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinksTable.COLUMN_NAME_DESCRIPTION)),
+                cursor.getString(cursor.getColumnIndex(CoffeeShopDatabase.DrinksTable.COLUMN_NAME_TYPE)),
+                cursor.getDouble(cursor.getColumnIndex(CoffeeShopDatabase.DrinksTable.COLUMN_NAME_PRICE))
+        );
+        return drinks;
+    }
+
+
 
     /**
      * getting drinks count
@@ -537,7 +562,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CoffeeShopDatabase.DrinkOrderTable._ID, drinkOrder.get_id());
+        contentValues.putNull(CoffeeShopDatabase.DrinkOrderTable._ID);
         contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_ORDER_DATE, drinkOrder.getOrder_date());
         contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_TOTAL_COST, drinkOrder.getTotal_cost());
 
@@ -613,7 +638,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * delete drink order
+     * delete drink order`
      */
     public void deleteDrinkOrder(DrinkOrder drinkOrder) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -631,7 +656,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
-        contentValues.put(CoffeeShopDatabase.OrderDetailTable._ID, orderDetail.get_id());
+        contentValues.putNull(CoffeeShopDatabase.OrderDetailTable._ID);
         contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_ORDER_ID, orderDetail.getOrder_id());
         contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_DRINK_ID, orderDetail.getDrink_id());
         contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_QUANTITY, orderDetail.getQuantity());

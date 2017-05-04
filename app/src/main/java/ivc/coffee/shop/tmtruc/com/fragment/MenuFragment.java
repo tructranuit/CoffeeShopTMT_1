@@ -37,14 +37,13 @@ public class MenuFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
         //create database helper
-        DatabaseHelper databaseHelper = ActivityUtils.createDatabaseHelper(getContext());
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
 
         createDataForDrinksTable(databaseHelper);
         createDataForDinkImageTable(databaseHelper);
@@ -71,7 +70,7 @@ public class MenuFragment extends Fragment {
     }
 
     //create data for drinks table
-    public void createDataForDrinksTable(DatabaseHelper databaseHelper){
+    public void createDataForDrinksTable(DatabaseHelper databaseHelper) {
         List<Drinks> drinksList = new ArrayList<>();
         drinksList.add(new Drinks(1, "Cafe Đen", "Cafe Đen", "Cafe", 30000));
         drinksList.add(new Drinks(2, "Cafe Sữa", "Cafe Sữa", "Cafe", 30000));
@@ -89,13 +88,13 @@ public class MenuFragment extends Fragment {
         drinksList.add(new Drinks(14, "Trà táo bạc hà", "Trà táo bạc hà", "Trà", 30000));
         drinksList.add(new Drinks(15, "Trà đào", "Trà đào", "Trà", 30000));
         drinksList.add(new Drinks(16, "Trà xoài", "Trà xoài", "Trà", 30000));
-        for (int i = 0; i<drinksList.size(); i++){
+        for (int i = 0; i < drinksList.size(); i++) {
             databaseHelper.insertDrink(drinksList.get(i));
         }
     }
 
     //create data for drink image table
-    public void createDataForDinkImageTable(DatabaseHelper databaseHelper){
+    public void createDataForDinkImageTable(DatabaseHelper databaseHelper) {
         List<DrinkImage> drinkImageList = new ArrayList<>();
         drinkImageList.add(new DrinkImage(1, 1, "http://i.imgur.com/qk6KGYT.jpg"));
         drinkImageList.add(new DrinkImage(2, 2, "http://i.imgur.com/0zv5Cjh.png"));
@@ -115,7 +114,7 @@ public class MenuFragment extends Fragment {
         drinkImageList.add(new DrinkImage(16, 16, "http://i.imgur.com/F2qWnWh.jpg"));
         drinkImageList.add(new DrinkImage(17, 1, "http://i.imgur.com/aRdnMQw.jpg"));
         //insert to database
-        for (int i = 0; i<drinkImageList.size(); i++){
+        for (int i = 0; i < drinkImageList.size(); i++) {
             databaseHelper.insertDrinkImage(drinkImageList.get(i));
         }
     }

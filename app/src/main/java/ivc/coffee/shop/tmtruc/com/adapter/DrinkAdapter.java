@@ -1,7 +1,6 @@
 package ivc.coffee.shop.tmtruc.com.adapter;
 
 import android.content.Context;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,10 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,13 +29,11 @@ import ivc.coffee.shop.tmtruc.com.util.FormatNumberUtils;
 public class DrinkAdapter extends ArrayAdapter<Drinks> {
 
     ArrayList<Drinks> drinksArrayList;
-    Context context;
 
     public DrinkAdapter(Context context, int resource, List<Drinks> drinksList) {
         super(context, resource, drinksList);
         drinksArrayList = new ArrayList<>();
         drinksArrayList.addAll(drinksList);
-        this.context = context;
     }
 
     public class ViewHolder {
@@ -60,12 +55,12 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
         View view = convertView;
         ViewHolder viewHolder = null;
 
-        if (view == null){
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.menu_item_layout, null);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
-        }else {
+        } else {
             viewHolder = (ViewHolder) view.getTag();
         }
 
@@ -74,14 +69,14 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
         viewHolder.tv_drink_name.setText(drinks.getDrink_name().toString());
         viewHolder.tv_price.setText(FormatNumberUtils.formatNumber(drinks.getPrice()) + "đ");
 
-        DatabaseHelper databaseHelper = ActivityUtils.createDatabaseHelper(context);
-
+        DatabaseHelper databaseHelper = new DatabaseHelper(getContext());
         //get image of drink
         List<DrinkImage> drinkImageList = databaseHelper.getAllImageOfDrink(drinks.get_id());
 
-        Picasso.with(context)
+        Picasso.with(getContext())
                 .load(drinkImageList.get(0).getImage_url())
-                .error(R.drawable.img_default)
+                .error(R.drawable.img_default_2)
+                .placeholder(R.drawable.img_default_2)
                 .into(viewHolder.img_drink_image);
 
         return view;

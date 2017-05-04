@@ -8,6 +8,9 @@ import android.provider.BaseColumns;
 
 public class CoffeeShopDatabase {
 
+    public static final String DATABASE_NAME = "coffee_shop_database";
+    public static final int DATABASE_VERSION = 1;
+
     public CoffeeShopDatabase() {
     }
 

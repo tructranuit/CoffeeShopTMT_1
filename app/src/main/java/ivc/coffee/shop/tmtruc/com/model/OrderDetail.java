@@ -51,4 +51,18 @@ public class OrderDetail {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean isEqual = false;
+        if (obj != null && obj instanceof OrderDetail){
+            isEqual = (this.getDrink_id() == ((OrderDetail) obj).getDrink_id());
+        }
+        return isEqual;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.get_id();
+    }
 }

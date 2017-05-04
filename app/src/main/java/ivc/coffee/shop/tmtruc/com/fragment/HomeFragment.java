@@ -4,7 +4,6 @@ package ivc.coffee.shop.tmtruc.com.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.ViewFlipper;
 
 import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,12 +45,12 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         //create database helper
-        databaseHelper = ActivityUtils.createDatabaseHelper(getContext());
-
+        databaseHelper = new DatabaseHelper(getContext());
         //create data for coffee shop table
         createDataForCoffeeShopTable(databaseHelper);
         //create data for coffee shop image table
         createDataForCoffeeShopImageTable(databaseHelper);
+
 
         CoffeeShop coffeeShop = databaseHelper.getCoffeeShop(1);
 
@@ -73,7 +71,7 @@ public class HomeFragment extends Fragment {
         createImageSlider(viewFlipper);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.img_google_map);
-        //click google maps icon event
+        //click google maps icon
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,14 +80,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //click phone number event
+        //click phone number
         tvCoffeeShopPhoneNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tvCoffeeShopPhoneNumber.getText()));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tvCoffeeShopPhoneNumber.getText()));
                 startActivity(intent);
             }
         });
+
 
         return view;
     }
@@ -114,6 +113,8 @@ public class HomeFragment extends Fragment {
         imageView.setAdjustViewBounds(true);
         Picasso.with(getContext())
                 .load(coffeeShopImageList.get(position).getImage_url())
+                .placeholder(R.drawable.img_default_1)
+                .error(R.drawable.img_default_1)
                 .into(imageView);
         viewFlipper.addView(imageView);
     }
