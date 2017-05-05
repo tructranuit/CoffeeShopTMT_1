@@ -37,7 +37,7 @@ public class DrinkDetailActivity extends AppCompatActivity {
     private ImageButton btnNext;
     private ImageButton btnAdd;
     private ImageButton btnRemove;
-    private Button btnAddToCart;
+    private ImageButton btnAddToCart;
 
 
     public static int MAX_QUANTITY = 20;
@@ -153,7 +153,7 @@ public class DrinkDetailActivity extends AppCompatActivity {
                     }
                     Toast.makeText(getApplicationContext(), "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Order fail - Số lượng bằng 0", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Vui lòng chọn số lượng trước khi thêm vào giở hàng", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,6 +169,6 @@ public class DrinkDetailActivity extends AppCompatActivity {
         btnRemove = (ImageButton) findViewById(R.id.btn_remove);
         btnAdd = (ImageButton) findViewById(R.id.btn_add);
         tvQuantity = (TextView) findViewById(R.id.tv_quantity);
-        btnAddToCart = (Button) findViewById(R.id.btn_add_to_cart);
+        btnAddToCart = (ImageButton) findViewById(R.id.btn_add_to_cart);
     }
 }

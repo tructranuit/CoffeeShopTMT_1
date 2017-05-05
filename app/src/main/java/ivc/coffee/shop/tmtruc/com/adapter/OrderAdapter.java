@@ -124,7 +124,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
                 builder.setIcon(R.drawable.ic_warning)
                         .setTitle("Delete?")
                         .setMessage("Sản phẩm này sẽ bị xóa.")
-                        .setNegativeButton("Có", new DialogInterface.OnClickListener() {
+                        .setPositiveButton("Có", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Toast.makeText(getContext(), "Đã xóa " + drinks.getDrink_name(), Toast.LENGTH_SHORT).show();
@@ -132,7 +132,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
                                 notifyDataSetChanged();
                             }
                         })
-                        .setPositiveButton("Không", new DialogInterface.OnClickListener() {
+                        .setNegativeButton("Không", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.cancel();

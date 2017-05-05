@@ -16,22 +16,21 @@
         android:gravity="center"
         android:padding="5dp"
         android:text="@string/drink_name"
-        android:textAppearance="?android:textAppearanceMedium"/>
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <TextView
         android:id="@+id/tv_drink_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginBottom="10dp"
+        android:gravity="center"
         android:text="@string/drink_price"
-        android:textColor="@color/textColor"
-        android:textAppearance="?android:textAppearanceSmall"/>
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/textColor" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -40,7 +39,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#fff"
+            android:background="@color/whiteBackground"
             android:src="@drawable/ic_arrow_back" />
 
         <ViewFlipper
@@ -56,7 +55,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#fff"
+            android:background="@color/whiteBackground"
             android:src="@drawable/ic_arrow_forward" />
 
     </LinearLayout>
@@ -66,9 +65,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:padding="20dp"
         android:text="@string/drink_description"
-        android:textStyle="italic"
-        android:padding="10dp"/>
+        android:textStyle="italic" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -88,35 +87,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginRight="1dp"
-                android:background="@drawable/custom_button"
-                android:padding="5dp"
+                android:background="@color/whiteBackground"
                 android:src="@drawable/ic_remove" />
 
             <TextView
                 android:id="@+id/tv_quantity"
-                android:layout_width="40dp"
+                android:layout_width="32dp"
                 android:layout_height="match_parent"
-                android:background="@color/colorScreenBackground"
-                android:gravity="center" />
+                android:background="@drawable/text_background"
+                android:gravity="center"
+                android:textColor="@color/whiteBackground"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"
-                android:background="@drawable/custom_button"
-                android:padding="5dp"
+                android:background="@color/whiteBackground"
                 android:src="@drawable/ic_add" />
         </LinearLayout>
 
-
-        <android.support.v7.widget.AppCompatButton
+        <ImageButton
             android:id="@+id/btn_add_to_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorScreenBackground"
-            android:text="@string/action_add_to_cart"
-            android:textAllCaps="false" />
+            android:layout_width="36dp"
+            android:layout_height="28dp"
+            android:background="@drawable/button_background_2"
+            android:src="@drawable/ic_add_to_cart" />
 
     </LinearLayout>
 

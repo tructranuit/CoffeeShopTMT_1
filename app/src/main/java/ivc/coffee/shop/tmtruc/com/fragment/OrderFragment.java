@@ -38,6 +38,10 @@ public class OrderFragment extends Fragment {
 
 
     public static ArrayList<OrderDetail> orderDetailArrayList = new ArrayList<>();
+
+    Button btnOrder;
+    Button btnClear;
+
     DatabaseHelper databaseHelper;
     OrderAdapter orderAdapter;
     String message;
@@ -57,9 +61,14 @@ public class OrderFragment extends Fragment {
 
         databaseHelper = new DatabaseHelper(getContext());
 
+        btnOrder = (Button) view.findViewById(R.id.btn_order);
+        btnClear = (Button) view.findViewById(R.id.btn_clear);
+
 
         if (orderDetailArrayList.size() == 0) {
             Toast.makeText(getContext(), "Không có sản phẩm nào!", Toast.LENGTH_SHORT).show();
+            btnOrder.setVisibility(View.GONE);
+            btnClear.setVisibility(View.GONE);
         } else {
 
             orderAdapter = new OrderAdapter(getContext(), R.layout.order_item_layout, orderDetailArrayList);
@@ -67,9 +76,13 @@ public class OrderFragment extends Fragment {
             final ListView listView = (ListView) view.findViewById(R.id.lv_order);
             listView.setAdapter(orderAdapter);
 
+            btnOrder.setVisibility(View.VISIBLE);
+            btnClear.setVisibility(View.VISIBLE);
+
         }
 
-        Button btnOrder = (Button) view.findViewById(R.id.btn_order);
+
+        //verify order
         btnOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +98,7 @@ public class OrderFragment extends Fragment {
                         message += drinks.getDrink_name() + "\nSố lượng: " + orderDetail.getQuantity();
                         message += "\n--------------------------\n";
                     }
-                    message += "\nTổng cộng: " + FormatNumberUtils.formatNumber(totalCost) + "đ";
+                    message += "Tổng cộng: " + FormatNumberUtils.formatNumber(totalCost) + "đ";
 
                     drinkOrder = new DrinkOrder();
                     drinkOrder.setOrder_date(ActivityUtils.getDatetime());
@@ -102,7 +115,7 @@ public class OrderFragment extends Fragment {
             }
         });
 
-        Button btnClear = (Button) view.findViewById(R.id.btn_clear);
+        //clear all product in cart
         btnClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

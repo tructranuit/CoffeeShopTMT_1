@@ -82,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * insert new coffee shop
      */
-    public void insertCoffeeShop(CoffeeShop coffeeShop) {
+    public long insertCoffeeShop(CoffeeShop coffeeShop) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -95,8 +95,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CoffeeShopDatabase.CoffeeShopTable.COLUMN_NAME_LONGITUDE, coffeeShop.getLongitude());
 
         // insert row
-        db.insert(CoffeeShopDatabase.CoffeeShopTable.TABLE_NAME, null, contentValues);
+        long index = db.insert(CoffeeShopDatabase.CoffeeShopTable.TABLE_NAME, null, contentValues);
         db.close();
+        return index;
     }
 
     /**
@@ -191,7 +192,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * insert new coffee shop image
      */
-    public void insertCoffeeShopImage(CoffeeShopImage coffeeShopImage) {
+    public long insertCoffeeShopImage(CoffeeShopImage coffeeShopImage) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -200,8 +201,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CoffeeShopDatabase.CoffeeShopImageTable.COLUMN_NAME_IMAGE_URL, coffeeShopImage.getImage_url());
 
         // insert row
-        db.insert(CoffeeShopDatabase.CoffeeShopImageTable.TABLE_NAME, null, contentValues);
+        long index = db.insert(CoffeeShopDatabase.CoffeeShopImageTable.TABLE_NAME, null, contentValues);
         db.close();
+        return index;
     }
 
     /**
@@ -313,7 +315,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * insert new drink
      */
-    public void insertDrink(Drinks drinks) {
+    public long insertDrink(Drinks drinks) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -324,8 +326,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CoffeeShopDatabase.DrinksTable.COLUMN_NAME_PRICE, drinks.getPrice());
 
         // insert row
-        db.insert(CoffeeShopDatabase.DrinksTable.TABLE_NAME, null, contentValues);
+        long index = db.insert(CoffeeShopDatabase.DrinksTable.TABLE_NAME, null, contentValues);
         db.close();
+        return index;
     }
 
     /**
@@ -440,7 +443,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * insert new drink image
      */
-    public void insertDrinkImage(DrinkImage drinkImage) {
+    public long insertDrinkImage(DrinkImage drinkImage) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -449,8 +452,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CoffeeShopDatabase.DrinkImageTable.COLUMN_NAME_IMAGE_URL, drinkImage.getImage_url());
 
         // insert row
-        db.insert(CoffeeShopDatabase.DrinkImageTable.TABLE_NAME, null, contentValues);
+        long index = db.insert(CoffeeShopDatabase.DrinkImageTable.TABLE_NAME, null, contentValues);
         db.close();
+        return index;
     }
 
     /**
@@ -653,7 +657,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * insert new order detail
      */
-    public void insertOrderDetail(OrderDetail orderDetail) {
+    public long insertOrderDetail(OrderDetail orderDetail) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -663,8 +667,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CoffeeShopDatabase.OrderDetailTable.COLUMN_NAME_QUANTITY, orderDetail.getQuantity());
 
         // insert row
-        db.insert(CoffeeShopDatabase.OrderDetailTable.TABLE_NAME, null, contentValues);
+        long index = db.insert(CoffeeShopDatabase.OrderDetailTable.TABLE_NAME, null, contentValues);
         db.close();
+        return index;
     }
 
     /**
