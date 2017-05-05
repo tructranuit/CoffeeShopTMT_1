@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CoffeeShopTMT</string>
+    <string name="app_name">Coffee Order</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -25,6 +25,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="action_add_to_cart">Add to cart</string>
     <string name="action_order">Order</string>
+    <string name="action_clear">Clear</string>
 
     <string name="drink_name">Drink name</string>
     <string name="drink_price">Price</string>

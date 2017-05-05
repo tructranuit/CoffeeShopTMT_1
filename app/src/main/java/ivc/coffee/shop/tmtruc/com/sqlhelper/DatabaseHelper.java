@@ -558,7 +558,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /**
      * insert new drink order
      */
-    public void insertDrinkOrder(DrinkOrder drinkOrder) {
+    public long insertDrinkOrder(DrinkOrder drinkOrder) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
@@ -567,8 +567,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(CoffeeShopDatabase.DrinkOrderTable.COLUMN_NAME_TOTAL_COST, drinkOrder.getTotal_cost());
 
         // insert row
-        db.insert(CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME, null, contentValues);
+        long index = db.insert(CoffeeShopDatabase.DrinkOrderTable.TABLE_NAME, null, contentValues);
         db.close();
+        return index;
     }
 
     /**

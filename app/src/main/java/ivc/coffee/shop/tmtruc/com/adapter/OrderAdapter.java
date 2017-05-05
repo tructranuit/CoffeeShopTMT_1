@@ -120,14 +120,14 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
         viewHolder.btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(getContext());
                 builder.setIcon(R.drawable.ic_warning)
-                        .setTitle("Warning!!")
-                        .setMessage("Bạn có chắc muốn xóa sản phẩm này không?")
+                        .setTitle("Delete?")
+                        .setMessage("Sản phẩm này sẽ bị xóa.")
                         .setNegativeButton("Có", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getContext(), "Đã xóa sản phẩm!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getContext(), "Đã xóa " + drinks.getDrink_name(), Toast.LENGTH_SHORT).show();
                                 remove(orderDetail);
                                 notifyDataSetChanged();
                             }
@@ -138,7 +138,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
                                 dialog.cancel();
                             }
                         });
-                Dialog dialog = builder.create();
+                android.app.AlertDialog dialog = builder.create();
                 dialog.show();
             }
         });
