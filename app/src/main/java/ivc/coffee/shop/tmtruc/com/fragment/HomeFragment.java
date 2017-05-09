@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +35,8 @@ public class HomeFragment extends Fragment {
     List<CoffeeShopImage> coffeeShopImageList;
     DatabaseHelper databaseHelper;
 
+    DatabaseReference database;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -43,6 +47,9 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        database = FirebaseDatabase.getInstance().getReference();
+//        writeNewCoffeeShop();
 
         //create database helper
         databaseHelper = new DatabaseHelper(getContext());
@@ -141,6 +148,18 @@ public class HomeFragment extends Fragment {
         for (int i = 0; i < coffeeShopImageList.size(); i++) {
             databaseHelper.insertCoffeeShopImage(coffeeShopImageList.get(i));
         }
+    }
+
+    private void writeNewCoffeeShop() {
+        CoffeeShop coffeeShop = new CoffeeShop(1,
+                getResources().getString(R.string.coffee_shop_name),
+                getResources().getString(R.string.coffee_shop_phone_number),
+                getResources().getString(R.string.coffee_shop_address),
+                getResources().getString(R.string.coffee_shop_description),
+                Double.valueOf(getResources().getString(R.string.coffee_shop_latitude)),
+                Double.valueOf(getResources().getString(R.string.coffee_shop_longitude))
+        );
+        database.child("coffee_shop").push().setValue(coffeeShop);
     }
 
     @Override

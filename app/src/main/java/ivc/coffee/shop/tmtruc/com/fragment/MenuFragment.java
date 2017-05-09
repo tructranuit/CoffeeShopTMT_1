@@ -113,6 +113,10 @@ public class MenuFragment extends Fragment {
         drinkImageList.add(new DrinkImage(15, 15, "http://i.imgur.com/0QSr5Ol.jpg"));
         drinkImageList.add(new DrinkImage(16, 16, "http://i.imgur.com/F2qWnWh.jpg"));
         drinkImageList.add(new DrinkImage(17, 1, "http://i.imgur.com/aRdnMQw.jpg"));
+        drinkImageList.add(new DrinkImage(18, 2, "http://i.imgur.com/2XYyFcU.jpg"));
+        drinkImageList.add(new DrinkImage(19, 2, "http://i.imgur.com/um8DLfS.jpg"));
+        drinkImageList.add(new DrinkImage(20, 10, "http://i.imgur.com/cTmOwhR.jpg"));
+        drinkImageList.add(new DrinkImage(21, 10, "http://i.imgur.com/1Rx2jzm.jpg"));
         //insert to database
         for (int i = 0; i < drinkImageList.size(); i++) {
             databaseHelper.insertDrinkImage(drinkImageList.get(i));
