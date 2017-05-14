@@ -28,10 +28,10 @@ import ivc.coffee.shop.tmtruc.com.util.FormatNumberUtils;
 
 public class DrinkDetailActivity extends AppCompatActivity {
 
-    private TextView tvDrinkName;
-    private TextView tvDrinkPrice;
-    private TextView tvDrinkDescription;
-    private TextView tvQuantity;
+    private TextView    tvDrinkName;
+    private TextView    tvDrinkPrice;
+    private TextView    tvDrinkDescription;
+    private TextView    tvQuantity;
     private ViewFlipper viewFlipper;
     private ImageButton btnPrev;
     private ImageButton btnNext;
@@ -136,6 +136,7 @@ public class DrinkDetailActivity extends AppCompatActivity {
             }
         });
 
+
         btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,7 +154,7 @@ public class DrinkDetailActivity extends AppCompatActivity {
                     }
                     Toast.makeText(getApplicationContext(), "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Vui lòng chọn số lượng trước khi thêm vào giở hàng", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Vui lòng chọn số lượng trước khi thêm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                 }
             }
         });

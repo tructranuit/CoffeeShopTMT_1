@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "116035629147",
+    "firebase_url": "https://coffee-shop-a55f2.firebaseio.com",
+    "project_id": "coffee-shop-a55f2",
+    "storage_bucket": "coffee-shop-a55f2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116035629147:android:dc8884a45417bf71",
+        "android_client_info": {
+          "package_name": "ivc.coffee.shop.tmtruc.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116035629147-l116ufn0qsa399i8nhat771loe7s3qd5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ivc.coffee.shop.tmtruc.com",
+            "certificate_hash": "5d1797ccf05fa3c2df257e919ea680310024da9b"
+          }
+        },
+        {
+          "client_id": "116035629147-hpg7kifcj8bi239hjqmn1qklqkh0fec3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9m2E3OWOHqCLcEBhLo4s5gmEdr7rS5oM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116035629147-hpg7kifcj8bi239hjqmn1qklqkh0fec3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
