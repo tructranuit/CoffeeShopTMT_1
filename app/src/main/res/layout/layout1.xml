@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--android:background="@drawable/welcome_bg_2"-->
+    <!--tools:context="com.example.tmt.demo.MainActivity">-->
+
+
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
+
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/button"-->
+            <!--android:layout_width="188dp"-->
+            <!--android:layout_height="156dp"-->
+            <!--android:background="@drawable/welcome_left_seat"-->
+            <!--android:scaleType="centerInside"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toLeftOf="@+id/imageView3"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.5" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="100dp"-->
+            <!--android:text="Welcome to Sushi King"-->
+            <!--android:textColor="#da0634"-->
+            <!--android:textSize="40dp"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/button2"-->
+            <!--android:layout_width="188dp"-->
+            <!--android:layout_height="156dp"-->
+            <!--android:background="@drawable/welcome_right_seat"-->
+            <!--android:scaleType="centerInside"-->
+            <!--android:text="Button"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/imageView3"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView3"-->
+            <!--android:layout_width="339dp"-->
+            <!--android:layout_height="293dp"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/imageView4"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/textView"-->
+            <!--app:srcCompat="@drawable/welcome_logo" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView4"-->
+            <!--android:layout_width="187dp"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:adjustViewBounds="true"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:srcCompat="@drawable/welcome_smiling_slogan"-->
+            <!--android:layout_marginBottom="105dp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/button4"-->
+            <!--android:layout_width="258dp"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_marginBottom="90dp"-->
+            <!--android:background="@drawable/welcome_please_touch_non_highlighted"-->
+            <!--android:text="Please touch here to begin"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintLeft_toRightOf="@+id/imageView4"-->
+            <!--app:layout_constraintRight_toRightOf="parent" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="146dp"-->
+            <!--android:layout_height="121dp"-->
+            <!--app:srcCompat="@drawable/welcome_man_highlighted_left"-->
+            <!--app:layout_constraintRight_toRightOf="@+id/button"-->
+            <!--app:layout_constraintTop_toTopOf="@+id/imageView2" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView2"-->
+            <!--android:layout_width="146dp"-->
+            <!--android:layout_height="121dp"-->
+            <!--app:srcCompat="@drawable/welcome_man_non_highlighted"-->
+            <!--app:layout_constraintLeft_toLeftOf="@+id/button2"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/button2" />-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:weightSum="2"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--app:layout_constraintVertical_bias="1.0">-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_left"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@android:color/transparent" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_right"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@android:color/transparent" />-->
+
+        <!--</LinearLayout>-->
+
+    <!--</android.support.constraint.ConstraintLayout>-->
+
+</RelativeLayout>
+
