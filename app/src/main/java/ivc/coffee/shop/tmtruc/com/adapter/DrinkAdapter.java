@@ -19,16 +19,12 @@ import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.model.DrinkImage;
 import ivc.coffee.shop.tmtruc.com.model.Drinks;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
-import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 import ivc.coffee.shop.tmtruc.com.util.FormatNumberUtils;
 
-/**
- * Created by tmt on 02/05/2017.
- */
 
 public class DrinkAdapter extends ArrayAdapter<Drinks> {
 
-    ArrayList<Drinks> drinksArrayList;
+    private ArrayList<Drinks> drinksArrayList;
 
     public DrinkAdapter(Context context, int resource, List<Drinks> drinksList) {
         super(context, resource, drinksList);
@@ -36,7 +32,7 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
         drinksArrayList.addAll(drinksList);
     }
 
-    public class ViewHolder {
+    private class ViewHolder {
         ImageView img_drink_image;
         TextView tv_drink_name;
         TextView tv_price;
@@ -57,7 +53,7 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.menu_item_layout, null);
+            view = inflater.inflate(R.layout.menu_item_layout, parent, false);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
         } else {
@@ -66,7 +62,7 @@ public class DrinkAdapter extends ArrayAdapter<Drinks> {
 
         Drinks drinks = drinksArrayList.get(position);
 
-        viewHolder.tv_drink_name.setText(drinks.getDrink_name().toString());
+        viewHolder.tv_drink_name.setText(drinks.getDrink_name());
         viewHolder.tv_price.setText(FormatNumberUtils.formatNumber(drinks.getPrice()) + "đ");
 
         DatabaseHelper databaseHelper = new DatabaseHelper(getContext());

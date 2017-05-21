@@ -1,6 +1,5 @@
 package ivc.coffee.shop.tmtruc.com.activity;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -11,16 +10,14 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.List;
 
 import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.model.CoffeeShop;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
-import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
+    GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

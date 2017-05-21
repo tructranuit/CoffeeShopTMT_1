@@ -1,16 +1,13 @@
 package ivc.coffee.shop.tmtruc.com.adapter;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +20,6 @@ import java.util.List;
 
 import ivc.coffee.shop.tmtruc.com.R;
 import ivc.coffee.shop.tmtruc.com.model.DrinkImage;
-import ivc.coffee.shop.tmtruc.com.model.DrinkOrder;
 import ivc.coffee.shop.tmtruc.com.model.Drinks;
 import ivc.coffee.shop.tmtruc.com.model.OrderDetail;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
@@ -32,18 +28,20 @@ import ivc.coffee.shop.tmtruc.com.util.FormatNumberUtils;
 import static ivc.coffee.shop.tmtruc.com.activity.DrinkDetailActivity.MAX_QUANTITY;
 
 /**
- * Created by tmtruc on 04/05/2017.
+ * OrderAdapter : order adapter
+ *
+ * @author tmt
+ * @since 2017/05/21
  */
-
 public class OrderAdapter extends ArrayAdapter<OrderDetail> {
-    ArrayList<OrderDetail> orderDetailArrayList;
+    private ArrayList<OrderDetail> orderDetailArrayList;
 
     public OrderAdapter(Context context, int resource, ArrayList<OrderDetail> orderDetailList) {
         super(context, resource, orderDetailList);
         orderDetailArrayList = orderDetailList;
     }
 
-    public class ViewHolder {
+    private class ViewHolder {
         ImageView img_drink_image;
         TextView tv_drink_name;
         TextView tv_price;
@@ -68,11 +66,11 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = convertView;
-        ViewHolder viewHolder = null;
+        ViewHolder viewHolder;
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.order_item_layout, null);
+            view = inflater.inflate(R.layout.order_item_layout, parent, false);
             viewHolder = new ViewHolder(view);
             view.setTag(viewHolder);
         } else {
@@ -86,7 +84,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
 
         viewHolder.tv_drink_name.setText(drinks.getDrink_name());
         viewHolder.tv_price.setText(FormatNumberUtils.formatNumber(drinks.getPrice()) + "đ");
-        viewHolder.tv_quantity.setText(orderDetail.getQuantity() + "");
+        viewHolder.tv_quantity.setText(String.valueOf(orderDetail.getQuantity()));
 
         List<DrinkImage> drinkImageList = databaseHelper.getAllImageOfDrink(drinks.get_id());
 
@@ -102,7 +100,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
             public void onClick(View v) {
                 if (orderDetail.getQuantity() < MAX_QUANTITY) {
                     orderDetail.setQuantity(orderDetail.getQuantity() + 1);
-                    finalViewHolder.tv_quantity.setText(orderDetail.getQuantity() + "");
+                    finalViewHolder.tv_quantity.setText(String.valueOf(orderDetail.getQuantity()));
                 }
             }
         });
@@ -112,7 +110,7 @@ public class OrderAdapter extends ArrayAdapter<OrderDetail> {
             public void onClick(View v) {
                 if (orderDetail.getQuantity() > 1) {
                     orderDetail.setQuantity(orderDetail.getQuantity() - 1);
-                    finalViewHolder.tv_quantity.setText(orderDetail.getQuantity() + "");
+                    finalViewHolder.tv_quantity.setText(String.valueOf(orderDetail.getQuantity()));
                 }
             }
         });

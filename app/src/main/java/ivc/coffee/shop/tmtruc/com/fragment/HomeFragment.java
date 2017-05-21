@@ -25,7 +25,6 @@ import ivc.coffee.shop.tmtruc.com.activity.MapsActivity;
 import ivc.coffee.shop.tmtruc.com.model.CoffeeShop;
 import ivc.coffee.shop.tmtruc.com.model.CoffeeShopImage;
 import ivc.coffee.shop.tmtruc.com.sqlhelper.DatabaseHelper;
-import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -150,17 +149,17 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    private void writeNewCoffeeShop() {
-        CoffeeShop coffeeShop = new CoffeeShop(1,
-                getResources().getString(R.string.coffee_shop_name),
-                getResources().getString(R.string.coffee_shop_phone_number),
-                getResources().getString(R.string.coffee_shop_address),
-                getResources().getString(R.string.coffee_shop_description),
-                Double.valueOf(getResources().getString(R.string.coffee_shop_latitude)),
-                Double.valueOf(getResources().getString(R.string.coffee_shop_longitude))
-        );
-        database.child("coffee_shop").push().setValue(coffeeShop);
-    }
+//    private void writeNewCoffeeShop() {
+//        CoffeeShop coffeeShop = new CoffeeShop(1,
+//                getResources().getString(R.string.coffee_shop_name),
+//                getResources().getString(R.string.coffee_shop_phone_number),
+//                getResources().getString(R.string.coffee_shop_address),
+//                getResources().getString(R.string.coffee_shop_description),
+//                Double.valueOf(getResources().getString(R.string.coffee_shop_latitude)),
+//                Double.valueOf(getResources().getString(R.string.coffee_shop_longitude))
+//        );
+//        database.child("coffee_shop").push().setValue(coffeeShop);
+//    }
 
     @Override
     public void onDestroy() {

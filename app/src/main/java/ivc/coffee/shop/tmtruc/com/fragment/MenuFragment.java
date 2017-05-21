@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -30,6 +31,14 @@ import ivc.coffee.shop.tmtruc.com.util.ActivityUtils;
 /**
  * A simple {@link Fragment} subclass.
  */
+
+
+/**
+ * MenuFragment : fragment menu
+ *
+ * @author tmt
+ * @since 2017/05/21
+ */
 public class MenuFragment extends Fragment {
 
 
@@ -48,7 +57,7 @@ public class MenuFragment extends Fragment {
         createDataForDrinksTable(databaseHelper);
         createDataForDinkImageTable(databaseHelper);
 
-        GridView grvMenu = (GridView) view.findViewById(R.id.grid_menu);
+        final GridView grvMenu = (GridView) view.findViewById(R.id.grid_menu);
 
         final List<Drinks> drinksList = databaseHelper.getAllDrink();
         DrinkAdapter adapter = new DrinkAdapter(getContext(), R.layout.menu_item_layout, drinksList);
@@ -66,10 +75,48 @@ public class MenuFragment extends Fragment {
             }
         });
 
+        final ImageView imageView1 = (ImageView) view.findViewById(R.id.ic_arrow_up);
+        final ImageView imageView2 = (ImageView) view.findViewById(R.id.ic_arrow_down);
+
+
+        /**
+         * setOnScrollListener for gridview menu
+         * */
+        grvMenu.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0) {
+                    int offset = grvMenu.getFirstVisiblePosition();
+                    if (offset == 0) {
+                        imageView1.setVisibility(View.GONE);
+                        imageView2.setVisibility(View.VISIBLE);
+                    }
+                } else if (totalItemCount - visibleItemCount == firstVisibleItem) {
+                    int offset = grvMenu.getLastVisiblePosition();
+                    if (offset == totalItemCount - 1) {
+                        imageView1.setVisibility(View.VISIBLE);
+                        imageView2.setVisibility(View.GONE);
+                    }
+                } else if (totalItemCount - visibleItemCount > firstVisibleItem) {
+                    imageView1.setVisibility(View.VISIBLE);
+                    imageView2.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         return view;
     }
 
-    //create data for drinks table
+    /**
+     * createDataForDrinksTable : create data for drinks table
+     *
+     * @param databaseHelper : database helper
+     */
     public void createDataForDrinksTable(DatabaseHelper databaseHelper) {
         List<Drinks> drinksList = new ArrayList<>();
         drinksList.add(new Drinks(1, "Cafe Đen", "Cafe Đen", "Cafe", 30000));
@@ -93,7 +140,11 @@ public class MenuFragment extends Fragment {
         }
     }
 
-    //create data for drink image table
+    /**
+     * createDataForDinkImageTable : create data for drink image table
+     *
+     * @param databaseHelper : database helper
+     */
     public void createDataForDinkImageTable(DatabaseHelper databaseHelper) {
         List<DrinkImage> drinkImageList = new ArrayList<>();
         drinkImageList.add(new DrinkImage(1, 1, "http://i.imgur.com/qk6KGYT.jpg"));
